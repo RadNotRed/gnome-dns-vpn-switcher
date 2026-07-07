@@ -1,0 +1,15 @@
+{
+  "name": "DNS & VPN Switcher",
+  "description": "Switch between DNS servers and connect to OpenVPN directly from the panel.",
+  "uuid": "dns-vpn-switcher@radnotred.dev",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
+  "url": "https://github.com/radnotred/gnome-dns-switcher",
+  "settings-schema": "org.gnome.shell.extensions.dns-vpn-switcher"
+}

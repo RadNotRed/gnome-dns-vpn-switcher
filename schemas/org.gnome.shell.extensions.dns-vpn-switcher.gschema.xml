@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.dns-vpn-switcher" path="/org/gnome/shell/extensions/dns-vpn-switcher/">
+    <key name="dns-servers" type="s">
+      <default>'[{"name":"Google","ip":"8.8.8.8,8.8.4.4","visible":true},{"name":"Cloudflare","ip":"1.1.1.1,1.0.0.1","visible":true},{"name":"OpenDNS","ip":"208.67.222.222,208.67.220.220","visible":true},{"name":"Quad9","ip":"9.9.9.9,149.112.112.112","visible":true},{"name":"AdGuard","ip":"94.140.14.14,94.140.15.15","visible":true}]'</default>
+      <summary>List of DNS servers</summary>
+      <description>JSON array containing DNS servers with name, ip, and visible flag.</description>
+    </key>
+    <key name="active-dns" type="s">
+      <default>''</default>
+      <summary>Currently active DNS server</summary>
+      <description>The IP of the currently active DNS server, or empty if using system default.</description>
+    </key>
+    <key name="vpn-enabled" type="b">
+      <default>false</default>
+      <summary>Enable VPN switcher</summary>
+      <description>Show VPN switcher in the panel.</description>
+    </key>
+    <key name="vpn-config-path" type="s">
+      <default>''</default>
+      <summary>Path to OpenVPN config file</summary>
+      <description>Absolute path to the .ovpn configuration file.</description>
+    </key>
+    <key name="vpn-username" type="s">
+      <default>''</default>
+      <summary>VPN Username</summary>
+      <description>Username for OpenVPN authentication.</description>
+    </key>
+    <key name="vpn-save-password" type="b">
+      <default>false</default>
+      <summary>Save VPN password</summary>
+      <description>Whether to save the VPN password in keyring.</description>
+    </key>
+    <key name="vpn-always-ask-password" type="b">
+      <default>false</default>
+      <summary>Always ask for VPN password</summary>
+      <description>Prompt for password on every connection.</description>
+    </key>
+    <key name="network-interface" type="s">
+      <default>''</default>
+      <summary>Target Network Interface</summary>
+      <description>The specific network interface to apply DNS to (leave empty to try and auto-detect active connection).</description>
+    </key>
+    <key name="vpn-dns-leak-protection" type="b">
+      <default>false</default>
+      <summary>DNS Leak Protection</summary>
+      <description>Force all DNS traffic exclusively through VPN when connected.</description>
+    </key>
+    <key name="vpn-auto-reconnect" type="b">
+      <default>false</default>
+      <summary>Auto Reconnect</summary>
+      <description>Automatically attempt to reconnect if the VPN drops unexpectedly.</description>
+    </key>
+  </schema>
+</schemalist>

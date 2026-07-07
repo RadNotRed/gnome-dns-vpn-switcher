@@ -1,0 +1,42 @@
+name: Publish Extension
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: Build & Publish to GNOME Extensions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnome-shell gettext jq
+
+      - name: Compile Schemas
+        run: |
+          glib-compile-schemas schemas/
+
+      - name: Pack Extension
+        run: |
+          gnome-extensions pack --extra-source=prefs.js --schema=schemas/org.gnome.shell.extensions.dns-vpn-switcher.gschema.xml --force
+          echo "ZIP_FILE=dns-vpn-switcher@radnotred.dev.shell-extension.zip" >> $GITHUB_ENV
+
+      - name: Upload Zip to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ env.ZIP_FILE }}
+          
+      - name: Publish to GNOME Extensions
+        # This uses a community action to publish directly to extensions.gnome.org
+        # You MUST set GNOME_TOKEN in your GitHub repository secrets.
+        # To get a token, see: https://gitlab.gnome.org/GNOME/gnome-shell-extensions/-/blob/main/HACKING.md
+        uses: rastersoft/gnome-extensions-action@v1
+        with:
+          token: ${{ secrets.GNOME_TOKEN }}
+          uuid: "dns-vpn-switcher@radnotred.dev"
+          zip_file: ${{ env.ZIP_FILE }}

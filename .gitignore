@@ -1,0 +1,10 @@
+# Compiled schemas
+schemas/gschemas.compiled
+
+# Packed extensions
+*.shell-extension.zip
+
+# Misc
+.DS_Store
+*~
+*.bak
