@@ -29,8 +29,8 @@
 ### Manual Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/radnotred/gnome-dns-switcher.git
-   cd gnome-dns-switcher
+   git clone https://github.com/radnotred/gnome-dns-vpn-switcher.git
+   cd gnome-dns-vpn-switcher
    ```
 2. Build and install:
    ```bash
